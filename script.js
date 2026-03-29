@@ -11,6 +11,7 @@ async function loadMarkdown(targetId, filePath) {
     const response = await fetch(filePath);
     const markdown = await response.text();
     const target = document.getElementById(targetId);
+
     target.innerHTML = marked.parse(markdown);
 
     if (window.renderMathInElement) {
@@ -21,12 +22,46 @@ async function loadMarkdown(targetId, filePath) {
         ]
       });
     }
+
+    // Initialize interactive PDB viewer if placeholder exists
+    const viewerDiv = target.querySelector("#pdb-viewer");
+
+    if (viewerDiv) {
+      viewerDiv.style.width = "100%";
+      viewerDiv.style.height = "480px";
+      viewerDiv.style.border = "1px solid #dce2e8";
+      viewerDiv.style.borderRadius = "14px";
+      viewerDiv.style.marginTop = "18px";
+      viewerDiv.style.background = "#ffffff";
+
+      const viewer = $3Dmol.createViewer(viewerDiv, {
+        backgroundColor: "white"
+      });
+
+      // Replace with your own local PDB path
+      const pdbText = await fetch("structure/example_structure.pdb")
+        .then(r => r.text());
+
+      viewer.addModel(pdbText, "pdb");
+
+      viewer.setStyle({}, {
+        cartoon: {
+          color: "spectrum"
+        }
+      });
+
+      // Optional: highlight residues or ligand
+      // viewer.setStyle({resi: "10-30"}, {stick: {colorscheme: "greenCarbon"}});
+
+      viewer.zoomTo();
+      viewer.render();
+    }
+
   } catch (error) {
     document.getElementById(targetId).innerHTML =
       `<p>Unable to load ${filePath}</p>`;
   }
 }
-
 sections.forEach(section => loadMarkdown(section.id, section.file));
 
 document.querySelectorAll(".nav-link").forEach(link => {
