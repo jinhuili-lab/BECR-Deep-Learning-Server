@@ -1,0 +1,1 @@
+Place downloadable structure files here, such as representative PDB/CIF files, PSSM matrices, FASTA examples, and supplementary tables.

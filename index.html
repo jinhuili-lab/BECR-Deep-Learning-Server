@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Learning Framework for Computational Biology</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Markdown renderer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>BECR Deep Learning Server</h1>
+      <p>Computational Biology Project</p>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="#introduction" class="nav-link active">Introduction</a>
+      <a href="#architecture" class="nav-link">Model Architecture</a>
+      <a href="#performance" class="nav-link">Performance</a>
+      <a href="#ablation" class="nav-link">Ablation Study</a>
+      <a href="#distillation" class="nav-link">Distillation</a>
+      <a href="#prediction" class="nav-link">Online Prediction</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <section id="introduction" class="section-card fade-section">
+      <h2>Introduction</h2>
+      <div id="introduction-content" class="markdown-body"></div>
+    </section>
+
+    <section id="architecture" class="section-card fade-section">
+      <h2>Model Architecture</h2>
+
+      <div class="architecture-diagram">
+        <div class="diagram-row">
+          <div class="diagram-box">PSSM Model</div>
+          <div class="diagram-box">CMT Model</div>
+          <div class="diagram-box">Sequence Model</div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="diagram-row center">
+          <div class="diagram-box wide">Fusion Model</div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="diagram-row center">
+          <div class="diagram-box wide">Knowledge Distillation</div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="diagram-row center">
+          <div class="diagram-box wide">Distilled Sequence-Only Model</div>
+        </div>
+      </div>
+
+      <div id="architecture-content" class="markdown-body"></div>
+    </section>
+
+    <section id="performance" class="section-card fade-section">
+      <h2>Performance</h2>
+      <div class="performance-grid">
+        <figure>
+          <img src="assets/performance/roc_curve.png" alt="ROC Curve Placeholder">
+          <figcaption>Figure 1. ROC comparison across models.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/performance/pr_curve.png" alt="PR Curve Placeholder">
+          <figcaption>Figure 2. Precision-recall comparison across models.</figcaption>
+        </figure>
+
+        <figure class="full-width">
+          <img src="assets/performance/model_comparison.png" alt="Model Comparison Placeholder">
+          <figcaption>Figure 3. Comparative performance of all single-modal and fusion models.</figcaption>
+        </figure>
+      </div>
+
+      <div id="performance-content" class="markdown-body"></div>
+    </section>
+
+    <section id="ablation" class="section-card fade-section">
+      <h2>Ablation Study</h2>
+
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Configuration</th>
+            <th>AUC</th>
+            <th>MCC</th>
+            <th>F1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fusion model</td>
+            <td>0.972</td>
+            <td>0.881</td>
+            <td>0.931</td>
+          </tr>
+          <tr>
+            <td>w/o PSSM</td>
+            <td>0.961</td>
+            <td>0.846</td>
+            <td>0.912</td>
+          </tr>
+          <tr>
+            <td>w/o CMT</td>
+            <td>0.955</td>
+            <td>0.831</td>
+            <td>0.901</td>
+          </tr>
+          <tr>
+            <td>w/o Sequence branch</td>
+            <td>0.944</td>
+            <td>0.801</td>
+            <td>0.883</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="ablation-content" class="markdown-body"></div>
+    </section>
+
+    <section id="distillation" class="section-card fade-section">
+      <h2>Distillation</h2>
+
+      <div class="highlight-box">
+        The distilled model retains near-fusion predictive performance while requiring only raw sequence input.
+      </div>
+
+      <div class="workflow">
+        <div class="workflow-box">Teacher Fusion Model</div>
+        <div class="arrow-inline">→</div>
+        <div class="workflow-box">Student Distilled Model</div>
+      </div>
+
+      <div id="distillation-content" class="markdown-body"></div>
+    </section>
+
+    <section id="prediction" class="section-card fade-section">
+      <h2>Online Prediction</h2>
+      <p class="prediction-description">
+        The online predictor uses the distilled sequence-only model and requires only a protein sequence as input.
+      </p>
+
+      <!-- Replace with your own Hugging Face Space URL -->
+      <iframe
+        class="hf-frame"
+        src="https://huggingface.co/spaces/YOUR_USERNAME/YOUR_SPACE"
+        title="Hugging Face Predictor">
+      </iframe>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

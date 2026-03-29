@@ -1,0 +1,1 @@
+Replace this folder with architecture figures, dataset overview image, logos, PDB thumbnails, and branch illustrations.

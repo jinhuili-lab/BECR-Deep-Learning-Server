@@ -1,0 +1,1 @@
+Replace roc_curve.png, pr_curve.png, and model_comparison.png with your manuscript figures.
