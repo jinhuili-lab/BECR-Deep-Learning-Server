@@ -22,9 +22,6 @@ $$
 P(y=1|x)=\sigma(f_{fusion}(x))
 $$
 
-## Example Figure
-
-![Dataset overview](../assets/architecture/dataset_overview.png)
 
 ## Representative Structure
 <div class="pdb-viewer" data-pdb="https://files.rcsb.org/download/1CRN.pdb"></div>
