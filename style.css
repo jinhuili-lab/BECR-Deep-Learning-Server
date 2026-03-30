@@ -268,10 +268,14 @@ figcaption {
 }
 
 .hf-frame {
-  width: 100%;
-  min-height: 800px;
-  border: 1px solid #d9dee5;
-  border-radius: 16px;
+    display: block;       /* 必须转为块级元素才能用 margin auto 居中 */
+    margin: 20px auto;    /* 上下留 20px 间距，左右自动平分实现居中 */
+    width: 95%;           /* 宽度建议设为 95% 或更高，防止 ModelScope 界面压缩 */
+    max-width: 1200px;    /* 限制最大宽度，避免在大屏幕上显得太散 */
+    height: 900px;        /* 增加高度，确保能看到完整的预测界面 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* 添加阴影，视觉效果更好 */
 }
 
 .fade-section {
