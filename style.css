@@ -17,12 +17,69 @@ body {
   padding: 32px 24px;
   box-sizing: border-box;
 }
-#pdb-viewer canvas {
-  border-radius: 14px;
+
+/* 容器样式 */
+.pdb-viewer {
+  width: 100%;
+  height: 500px;
+  min-height: 500px;
+  border: 1px solid #dce2e8;
+  border-radius: 12px;
+  margin: 24px 0;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative; /* 必须加，防止 canvas 漂移 */
+}
+.sequence-container {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 2px;
+  word-break: break-all;
+  padding: 15px;
+  border: 1px solid #dde1e6;
+  border-radius: 8px;
+  background: #f8f9fa;
+  user-select: text; /* 允许鼠标划选 */
+  cursor: pointer;
+  line-height: 1.6;
+}
+.sequence-viewer {
+  margin-top: 10px;
+  padding: 15px;
+  background: #f8f9fa;
+  border: 1px solid #dce2e8;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace; /* 等宽字体非常重要 */
+  word-break: break-all;
+  line-height: 2;
+  letter-spacing: 2px;
 }
 
-#pdb-viewer {
-  overflow: hidden;
+.sequence-viewer span {
+  cursor: pointer;
+  padding: 2px;
+  transition: all 0.2s;
+  color: #4a5568;
+}
+
+.sequence-viewer span:hover, 
+.sequence-viewer span.active {
+  background: #ffeb3b; /* 亮黄色背景 */
+  color: #000;
+  font-weight: bold;
+  border-radius: 4px;
+}
+/* 高亮样式 */
+.sequence-container span.highlight {
+  background-color: #ffeb3b;
+  font-weight: bold;
+}
+
+/* 强制让插件生成的 canvas 填满容器并应用圆角 */
+.pdb-viewer canvas {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 12px; 
+  display: block;
 }
 .sidebar-header h1 {
   font-family: Georgia, 'Times New Roman', serif;

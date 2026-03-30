@@ -25,3 +25,9 @@ $$
 ## Example Figure
 
 ![Dataset overview](../assets/architecture/dataset_overview.png)
+
+## Representative Structure
+<div class="pdb-viewer" data-pdb="https://files.rcsb.org/download/1CRN.pdb"></div>
+<div class="sequence-container" id="sequence-viewer">
+  </div>
+Figure. Representative BECR structure.
