@@ -24,7 +24,7 @@ $$
 
 
 ## Representative Structure
-<div class="pdb-viewer" data-pdb="https://raw.githubusercontent.com/jinhuili-lab/BECR-Deep-Learning-Server/refs/heads/master/structure/example_structure.pdb"></div>
+<div class="pdb-viewer" data-pdb="https://files.rcsb.org/download/5FCE.pdb"></div>
 <div class="sequence-container" id="sequence-viewer">
   </div>
 Figure. Representative BECR structure.
